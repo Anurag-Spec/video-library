@@ -1,7 +1,7 @@
 import React from "react";
-
+import "./homepage.scss";
 const Homepage = () => {
-  return <div>Hello</div>;
+  return <div className="home">Hello</div>;
 };
 
 export default Homepage;
