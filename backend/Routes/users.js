@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const User = require("../models/User");
+const User = require("../Models/User");
 const CryptoJS = require("crypto-js");
 const verify = require("../verifyToken");
 //UPDATE
@@ -32,7 +32,7 @@ router.put("/:id", verify, async (req, res) => {
 
 //DELETE
 router.delete("/:id", verify, async (req, res) => {
-  if (req.user.id === req.params.id || req.user.isAdmin) {
+  if (req.user.id === req.params.id) {
     try {
       await User.findByIdAndDelete(req.params.id);
       res.status(200).json("User has been deleted...");
