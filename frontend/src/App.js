@@ -2,7 +2,8 @@ import Homepage from "./Pages/Homepage/Homepage";
 import "./app.scss";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Watch from "./Pages/Watch/Watch";
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
         </Route>
         <Route path="/series">
           <Homepage type="series" />
+        </Route>
+        <Route path="/watch">
+          <Watch />
         </Route>
         <Route path="/login">
           <Login />
