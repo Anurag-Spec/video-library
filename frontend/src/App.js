@@ -9,10 +9,11 @@ import {
   Redirect,
 } from "react-router-dom";
 import Watch from "./Pages/Watch/Watch";
-
-const user = true;
+import { useContext } from "react";
+import { AuthContext } from "./authContext/AuthContext";
 
 function App() {
+  const { user } = useContext(AuthContext);
   return (
     <Router>
       <Switch>
