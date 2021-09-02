@@ -8,8 +8,14 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/">
+        <Route exact path="/">
           <Homepage />
+        </Route>
+        <Route path="/movies">
+          <Homepage type="movie" />
+        </Route>
+        <Route path="/series">
+          <Homepage type="series" />
         </Route>
         <Route path="/login">
           <Login />
