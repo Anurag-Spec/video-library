@@ -9,6 +9,7 @@ const Homepage = ({ type }) => {
   const [genre, setGenre] = useState(null);
 
   useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem("user"));
     const getRandomLists = async () => {
       try {
         const res = await axios.get(
@@ -17,9 +18,7 @@ const Homepage = ({ type }) => {
           }`,
           {
             headers: {
-              token:
-                "Bearer " +
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMzExN2M0N2NkYmU1MTdhNDMzMzI3ZCIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MzA2MDczMjYsImV4cCI6MTYzMTAzOTMyNn0.h_DVZSgzjpvNiX_IwcEP-K9Dw6nmTGtxd74hFk6yp5o",
+              token: "Bearer " + currentUser.accessToken,
             },
           }
         );
