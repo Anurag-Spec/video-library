@@ -40,5 +40,9 @@
       "last 1 safari version"
     ]
   },
+<<<<<<< HEAD
   "proxy": "https://video-library1.herokuapp.com/api/"
+=======
+  "proxy": "https://video-library1.herokuapp.com/"
+>>>>>>> e40298c2cac101858572d7e1decb07076a48c0d2
 }
