@@ -22,7 +22,10 @@ export default function Register() {
     setPassword(passwordRef.current.value);
     setUsername(usernameRef.current.value);
     try {
-      await axios.post("auth/register", { email, username, password });
+      await axios.post(
+        "https://video-library1.herokuapp.com/api/auth/register",
+        { email, username, password }
+      );
       history.push("/login");
     } catch (err) {}
   };
