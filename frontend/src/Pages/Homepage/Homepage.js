@@ -13,10 +13,9 @@ const Homepage = ({ type }) => {
     const getRandomLists = async () => {
       try {
         const res = await axios.get(
-          "https://video-library1.herokuapp.com/api/",
-          `lists${type ? "?type=" + type : ""}${
-            genre ? "&genre=" + genre : ""
-          }`,
+          `https://video-library1.herokuapp.com/api/lists${
+            type ? "?type=" + type : ""
+          }${genre ? "&genre=" + genre : ""}`,
           {
             headers: {
               token: "Bearer " + currentUser.accessToken,
