@@ -6,6 +6,7 @@ import "./Register.scss";
 
 export default function Register() {
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const history = useHistory();
@@ -28,7 +29,7 @@ export default function Register() {
       );
       history.push("/login");
     } catch (err) {
-      console.log(err);
+      setError(err);
     }
   };
   return (
@@ -46,6 +47,7 @@ export default function Register() {
             Sign in
           </Link>
         </div>
+        {error && <div>{error}</div>}
       </div>
       <div className="container">
         <h1>Unlimited movies, TV shows, and more.</h1>

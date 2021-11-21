@@ -39,38 +39,44 @@ export default function ListItem({ index, item }) {
       <div
         className="listItem"
         style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={() => {
+          setIsHovered(true);
+        }}
+        onMouseLeave={() => {
+          setIsHovered(false);
+        }}
       >
         {!isHovered && <img src={movie?.imgSm} alt="" />}
-        {isHovered && (
-          // eslint-disable-next-line react/jsx-no-comment-textnodes
-          <>
-            <iframe
-              frameBorder="0"
-              type="text/html"
-              width="100%"
-              height="60%"
-              src={movie.trailer + `?autoplay=1`}
-            ></iframe>
-            <div className="itemInfo">
-              <div className="icons">
-                <PlayArrow />
-                <Add />
-                <ThumbUpAltOutlined />
-                <ThumbDownOutlined />
+
+        <>
+          {isHovered && (
+            <>
+              <iframe
+                frameBorder="0"
+                type="text/html"
+                width="100%"
+                height="60%"
+                src={movie.trailer + `?autoplay=1`}
+              ></iframe>
+              <div className="itemInfo">
+                <div className="icons">
+                  <PlayArrow />
+                  <Add />
+                  <ThumbUpAltOutlined />
+                  <ThumbDownOutlined />
+                </div>
+                <div className="itemInfoTop">
+                  <span>{movie.title}</span>
+                  <span>{movie.duration}</span>
+                  <span className="limit">+{movie.limit}</span>
+                  <span>{movie.year}</span>
+                </div>
+                <div className="desc">{movie.desc}</div>
+                <div className="genre">{movie.genre}</div>
               </div>
-              <div className="itemInfoTop">
-                <span>{movie.title}</span>
-                <span>{movie.duration}</span>
-                <span className="limit">+{movie.limit}</span>
-                <span>{movie.year}</span>
-              </div>
-              <div className="desc">{movie.desc}</div>
-              <div className="genre">{movie.genre}</div>
-            </div>
-          </>
-        )}
+            </>
+          )}
+        </>
       </div>
     </Link>
   );
