@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import "./Listitem.scss";
 import {
   PlayArrow,
@@ -41,18 +42,26 @@ export default function ListItem({ index, item }) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <img src={movie?.imgSm} alt="" />
+        {!isHovered && <img src={movie?.imgSm} alt="" />}
         {isHovered && (
+          // eslint-disable-next-line react/jsx-no-comment-textnodes
           <>
-            <video src={movie.trailer} autoPlay={true} loop />
+            <iframe
+              frameBorder="0"
+              type="text/html"
+              width="100%"
+              height="60%"
+              src={movie.trailer + `?autoplay=1`}
+            ></iframe>
             <div className="itemInfo">
               <div className="icons">
-                <PlayArrow className="icon" />
-                <Add className="icon" />
-                <ThumbUpAltOutlined className="icon" />
-                <ThumbDownOutlined className="icon" />
+                <PlayArrow />
+                <Add />
+                <ThumbUpAltOutlined />
+                <ThumbDownOutlined />
               </div>
               <div className="itemInfoTop">
+                <span>{movie.title}</span>
                 <span>{movie.duration}</span>
                 <span className="limit">+{movie.limit}</span>
                 <span>{movie.year}</span>

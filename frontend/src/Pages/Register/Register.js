@@ -27,7 +27,9 @@ export default function Register() {
         { email, username, password }
       );
       history.push("/login");
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className="register">

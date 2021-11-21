@@ -15,12 +15,12 @@ export default function Watch() {
         </div>
       </Link>
       <iframe
-        frameborder="0"
+        frameBorder="0"
         type="text/html"
-        src={movie.trailer}
+        src={movie.trailer + `?autoplay=1`}
         width="100%"
         height="100%"
-        allowfullscreen
+        allowFullScreen
         allow="autoplay"
       ></iframe>
     </div>
