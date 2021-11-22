@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { login } from "../../authContext/apicalls";
 import { AuthContext } from "../../authContext/AuthContext";
 import "./Login.scss";
@@ -7,6 +8,12 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { dispatch } = useContext(AuthContext);
+  const handleGuestLogin = (e) => {
+    e.preventDefault();
+    setEmail("user123@test.com");
+    setPassword("123456");
+    login({ email, password }, dispatch);
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -39,9 +46,14 @@ export default function Login() {
           <button className="loginButton" onClick={handleLogin}>
             Sign In
           </button>
-          <span>
-            New to Netflix? <b>Sign up now.</b>
-          </span>
+          <button className="loginButton" onClick={handleGuestLogin}>
+            Login as Guest
+          </button>
+          <Link to="/register">
+            <span>
+              New to Netflix? <b>Sign up now.</b>
+            </span>
+          </Link>
           <small>
             This page is not protected by Google reCAPTCHA to ensure you're not
             a bot. <b>Learn more</b>.

@@ -12,16 +12,14 @@ export default function Register() {
   const history = useHistory();
 
   const emailRef = useRef();
-  const passwordRef = useRef();
-  const usernameRef = useRef();
 
   const handleStart = () => {
     setEmail(emailRef.current.value);
   };
   const handleFinish = async (e) => {
     e.preventDefault();
-    setPassword(passwordRef.current.value);
-    setUsername(usernameRef.current.value);
+    console.log(username, "username");
+    console.log(password, "password");
     try {
       await axios.post(
         "https://video-library1.herokuapp.com/api/auth/register",
@@ -44,10 +42,9 @@ export default function Register() {
             />
           </Link>
           <Link className="loginButton" to="/login">
-            Sign in
+            Sign in or Guest Login
           </Link>
         </div>
-        {error && <div>{error}</div>}
       </div>
       <div className="container">
         <h1>Unlimited movies, TV shows, and more.</h1>
@@ -55,6 +52,14 @@ export default function Register() {
         <p>
           Ready to watch? Enter your email to create or restart your membership.
         </p>
+        {error && (
+          <>
+            <div>{error.message}</div>
+            <Link to="/">
+              <button className="registerButton">Go Back</button>
+            </Link>
+          </>
+        )}
         {!email ? (
           <div className="input">
             <input type="email" placeholder="email address" ref={emailRef} />
@@ -64,8 +69,16 @@ export default function Register() {
           </div>
         ) : (
           <form className="input">
-            <input type="username" placeholder="username" ref={usernameRef} />
-            <input type="password" placeholder="password" ref={passwordRef} />
+            <input
+              type="username"
+              placeholder="username"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
             <button className="registerButton" onClick={handleFinish}>
               Start
             </button>
